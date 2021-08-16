@@ -6,20 +6,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 @Entity
-@Table(name = "RESERVATION")
+@Table(name="RESERVATION")
 public class Reservation {
     @Id
-    @Column(name = "RESERVATION_ID")
+    @Column(name="RESERVATION_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long reservationId;
-    @Column(name = "ROOM_ID")
+    @Column(name="ROOM_ID")
     private long roomId;
-    @Column(name = "GUEST_ID")
+    @Column(name="GUEST_ID")
     private long guestId;
-    @Column(name = "RES_DATE")
-    private long date;
+    @Column(name="RES_DATE")
+    private Date reservationDate;
 
     public long getReservationId() {
         return reservationId;
@@ -45,11 +46,11 @@ public class Reservation {
         this.guestId = guestId;
     }
 
-    public long getDate() {
-        return date;
+    public Date getReservationDate() {
+        return reservationDate;
     }
 
-    public void setDate(long date) {
-        this.date = date;
+    public void setReservationDate(Date reservationDate) {
+        this.reservationDate = reservationDate;
     }
 }

@@ -1,17 +1,18 @@
 package com.aidenwaring.lil.learningspring.business.service;
 
-import com.aidenwaring.lil.learningspring.business.domain.RoomReservation;
-import com.aidenwaring.lil.learningspring.data.entity.Guest;
-import com.aidenwaring.lil.learningspring.data.entity.Reservation;
-import com.aidenwaring.lil.learningspring.data.entity.Room;
-import com.aidenwaring.lil.learningspring.data.repository.GuestRepository;
-import com.aidenwaring.lil.learningspring.data.repository.ReservationRepository;
 import com.aidenwaring.lil.learningspring.data.repository.RoomRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.aidenwaring.lil.learningspring.business.domain.RoomReservation;
+import com.aidenwaring.lil.learningspring.data.entity.Guest;
+import com.aidenwaring.lil.learningspring.data.entity.Reservation;
+import com.aidenwaring.lil.learningspring.data.entity.Room;
+import com.aidenwaring.lil.learningspring.data.repository.GuestRepository;
+import com.aidenwaring.lil.learningspring.data.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,7 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
     @Autowired
-    public ReservationService(RoomRepository roomRepository, GuestRepository guestRepository,
-        ReservationRepository reservationRepository) {
+    public ReservationService(RoomRepository roomRepository, GuestRepository guestRepository, ReservationRepository reservationRepository) {
         this.roomRepository = roomRepository;
         this.guestRepository = guestRepository;
         this.reservationRepository = reservationRepository;
@@ -31,7 +31,7 @@ public class ReservationService {
 
     public List<RoomReservation> getRoomReservationsForDate(Date date){
         Iterable<Room> rooms = this.roomRepository.findAll();
-        Map<Long, RoomReservation> roomReservationMap = new HashMap<>();
+        Map<Long, RoomReservation> roomReservationMap = new HashMap();
         rooms.forEach(room -> {
             RoomReservation roomReservation = new RoomReservation();
             roomReservation.setRoomId(room.getRoomId());
@@ -52,6 +52,6 @@ public class ReservationService {
         for(Long id: roomReservationMap.keySet()){
             roomReservations.add(roomReservationMap.get(id));
         }
-        return null;
+        return roomReservations;
     }
 }
