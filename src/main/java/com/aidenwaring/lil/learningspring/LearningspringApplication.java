@@ -1,6 +1,5 @@
 package com.aidenwaring.lil.learningspring;
 
-import com.aidenwaring.lil.learningspring.LearningspringApplication;
 import com.aidenwaring.lil.learningspring.data.entity.Room;
 import com.aidenwaring.lil.learningspring.data.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
